@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class CurrencySplitter {
+
+    // List of Indian currency denominations
+    static int[] denominations = {2000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
+
+    public static void splitCurrency(int amount) {
+        System.out.println("Currency split for ₹" + amount + ":");
+        for (int note : denominations) {
+            while (amount >= note) {
+                System.out.print(note + " ");
+                amount -= note;
+            }
+        }
+        System.out.println(); // for newline
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the amount (in ₹): ");
+        int amount = scanner.nextInt();
+
+        if (amount <= 0) {
+            System.out.println("Please enter a valid positive amount.");
+        } else {
+            splitCurrency(amount);
+        }
+
+        scanner.close();
+    }
+}
